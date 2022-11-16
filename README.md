@@ -14,7 +14,7 @@ Install dependencies
 $ pip install -r requirements.txt
 Run database container
 
-Rename file .env.example in .env
+Rename file .env.sample in .env
 
 $ docker-compose up -d db
 Add migrations to database
