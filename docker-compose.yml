@@ -5,7 +5,7 @@ services:
     image: postgres:12
     volumes:
       - db_data:/var/lib/postgresql/data
-    env_file: .envsample
+    env_file: .env
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-secret}
