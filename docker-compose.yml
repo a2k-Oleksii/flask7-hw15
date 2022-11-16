@@ -23,7 +23,7 @@ services:
     command: bash ./run.sh
     ports:
       - 127.0.0.1:${WEB_PORT:-5001}:5000
-    env_file: .envsample
+    env_file: .env
     environment:
       - FLASK_ENV=production
     depends_on:
