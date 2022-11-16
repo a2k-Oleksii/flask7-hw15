@@ -5,7 +5,7 @@ services:
     image: postgres:12
     volumes:
       - db_data:/var/lib/postgresql/data
-    env_file: .envsample
+    env_file: envsample
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-secret}
@@ -23,7 +23,7 @@ services:
     command: bash ./run.sh
     ports:
       - 127.0.0.1:${WEB_PORT:-5001}:5000
-    env_file: .envsample
+    env_file: envsample
     environment:
       - FLASK_ENV=production
     depends_on:
