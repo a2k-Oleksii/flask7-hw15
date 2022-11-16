@@ -7,7 +7,7 @@ class BaseConfig:
     APP_NAME = os.getenv("APP_NAME", "Flask app")
     SECRET_KEY = os.getenv("SECRET_KEY", "secret")
     DEBUG_TB_ENABLED = False
-    SQLALCHEMY_TRACK_MODIFICATION = False
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
     WTF_CSRF_ENABLED = False
 
     @staticmethod
@@ -17,14 +17,14 @@ class BaseConfig:
 
 class DevelopmentConfig(BaseConfig):
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = os.egetenv("SQLALCHEMY_DATABASE_URI",
+    SQLALCHEMY_DATABASE_URI = os.getenv("DEVELOPMENT_DATABASE_URL",
                                          "sqlite:///" + os.path.join(base_dir, "development.sqlite3"))
 
 
 class ProductionConfig(BaseConfig):
     DEBUG = False
-    SQLALCHEMY_DATABASE_URI = os.egetenv("SQLALCHEMY_DATABASE_URI",
-                                         "sqlite:///" + os.path.join(base_dir, "development.sqlite3"))
+    SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL",
+                                         "sqlite:///" + os.path.join(base_dir, "production.sqlite3"))
     WTF_CSRF_ENABLED = True
 
 

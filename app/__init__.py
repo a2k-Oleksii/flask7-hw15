@@ -12,12 +12,12 @@ migration = Migrate()
 
 def create_app(envoiroment="developement"):
     from config import config
-    from app.view import auth_blueprint, main_blueprint
-    from app.models import User, AnonymousUser
+    from app.view import auth_blueprint, main_blueprint, plant_blueprint
+    from app.models import User, AnonymousUser, Plant
 
     app = Flask(__name__)
 
-    env = os.getenv("FLASK_ENV", environment)
+    env = os.getenv("FLASK_ENV", envoiroment)
     app.config.from_object(config[env])
     config[env].configure(app)
 
@@ -27,6 +27,7 @@ def create_app(envoiroment="developement"):
 
     app.register_blueprint(auth_blueprint)
     app.register_blueprint(main_blueprint)
+    app.register_blueprint(plant_blueprint)
 
     @login_manager.user_loader
     def get_user(id):

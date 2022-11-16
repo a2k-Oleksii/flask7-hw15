@@ -16,16 +16,16 @@ class RegistrationForm(FlaskForm):
     username = StringField("Username", [DataRequired(), Length(4, 255)])
     email = StringField("Email Address", [DataRequired(), Email()])
     password = PasswordField("Password", [DataRequired(), Length(8, 255)])
-    password_confirm = PasswordField("Confirm Password", [DataRequired(), EqualTo("password")])
+    password_confirmation = PasswordField("Confirm Password", [DataRequired(), EqualTo("password")])
     submit = SubmitField("Register")
 
-    def validate_username(self, form, field):
+    def validate_username(form, field):
         if User.query.filter_by(username=field.data).first():
             raise ValidationError("This username is taken.")
 
-    def validate_email(self, form, field):
+    def validate_email(form, field):
         if User.query.filter_by(email=field.data).first():
-            raise ValidationError("This email is already registred.")
+            raise ValidationError("This email is already registered.")
 
 
 class ProfileForm(FlaskForm):
