@@ -19,7 +19,7 @@ Rename file .env.sample in .env
 $ docker-compose up -d db
 Add migrations to database
 
-$ flask db migrate
+$ flask db upgrade
 Run application
 
 $ flask run

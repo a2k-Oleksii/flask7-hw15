@@ -6,6 +6,11 @@ body {
     width: auto;
 }
 
+.plants-container {
+    display: flex;
+    justify-content: space-between;
+}
+
 * {
     border-radius: 0 !important;
 }
